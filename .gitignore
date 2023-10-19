@@ -1,35 +1,25 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Node.js and Express specific files
+node_modules/
+package-lock.json
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Environment variables
 
-# testing
-/coverage
+# Log files
+logs/
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# Mac OS-specific files
 .DS_Store
-*.pem
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Visual Studio Code specific files
+.vscode/
 
-# local env files
-.env*.local
+# NPM debugging logs
+npm-debug.log
 
-# vercel
-.vercel
+# Yarn specific files
+yarn-error.log
+yarn.lock
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Dependency directories
+public/
+uploads/
