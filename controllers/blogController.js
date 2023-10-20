@@ -23,8 +23,15 @@ async function createBlog(req, res) {
 }
 
 async function getAllBlogs(req, res) {
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    console.log("data", page, pageSize)
+
     try {
-        const blogs = await Blog.find();
+        const blogs = await Blog.find()
+            .skip((page - 1) * pageSize)
+            .limit(pageSize);
+
         res.json(blogs);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -42,6 +49,8 @@ async function editBlog(req, res) {
             return res.status(404).json({ message: 'Blog not found' });
         }
 
+        pusher.trigger('blog', 'update-blog', { blog: updatedBlog });
+        console.log('Pusher event triggered:', updatedBlog);
         res.json(updatedBlog);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -57,13 +66,12 @@ async function deleteBlog(req, res) {
         if (!deletedBlog) {
             return res.status(404).json({ message: 'Blog not found' });
         }
-
+        pusher.trigger('blog', 'deleted-blog', { blogId: deletedBlog._id });
         res.json({ message: 'Blog deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
-
 
 async function getBlogById(req, res) {
     const blogId = req.params.id;
