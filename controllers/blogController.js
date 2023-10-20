@@ -22,17 +22,6 @@ async function createBlog(req, res) {
     }
 }
 
-// async function createBlog(req, res) {
-//     const { title, description, image } = req.body;
-
-//     try {
-//         const newBlog = await Blog.create({ title, description, image });
-//         res.status(201).json(newBlog);
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// }
-
 async function getAllBlogs(req, res) {
     try {
         const blogs = await Blog.find();

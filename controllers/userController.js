@@ -32,7 +32,7 @@ async function login(req, res) {
         } else if (password != user.password) {
             return res.status(400).json({ message: 'Invalid password.' });
         } else {
-            res.json({ message: 'Login successful' });
+            res.json({ email, password, message: 'Login successful' });
         }
     } catch (error) {
         res.status(500).json({ message: error.message });
