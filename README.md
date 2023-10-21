@@ -19,9 +19,13 @@ a. cd blog-backend
 b. npm install
 c. npm start
 Then the backend server will start automatically. It will run in the port no. 5000
-path: http://localhost:5000
-
 ```
+## Local path -
+http://localhost:5000
+
+
+## Deployed live url -
+https://blogs-g2mr.onrender.com/blogs/...
 
 ```
 Finally, the project setup is completed.
